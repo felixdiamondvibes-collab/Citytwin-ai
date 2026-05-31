@@ -63,5 +63,26 @@ L.circleMarker(
 .bindPopup(
 `<b>${location.name}</b><br>${location.traffic}`
 );
+function predictTraffic() {
 
+  const hour = new Date().getHours();
+
+  let prediction;
+
+  if (hour >= 7 && hour <= 10) {
+    prediction = "Heavy Traffic Expected";
+  }
+  else if (hour >= 17 && hour <= 20) {
+    prediction = "Rush Hour Active";
+  }
+  else {
+    prediction = "Traffic Normal";
+  }
+
+  document.getElementById("prediction").innerText =
+    prediction;
+}
+
+predictTraffic();
+  
 });
