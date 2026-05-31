@@ -1,10 +1,32 @@
 body{
+  margin:0;
   background:#0f172a;
   color:white;
-  text-align:center;
   font-family:Arial,sans-serif;
 }
 
-h1{
-  margin-top:50px;
+header{
+  text-align:center;
+  padding:30px;
+  background:#111827;
+}
+
+.dashboard{
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  flex-wrap:wrap;
+  margin-top:30px;
+}
+
+.card{
+  width:180px;
+  padding:20px;
+  border-radius:15px;
+  background:#1e293b;
+  text-align:center;
+}
+
+.card h2{
+  margin-bottom:10px;
 }
