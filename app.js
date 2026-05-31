@@ -81,6 +81,8 @@ function predictTraffic() {
 
   document.getElementById("prediction").innerText =
     prediction;
+  document.getElementById("weatherRisk").innerText =
+"Low Risk";
 }
 
 predictTraffic();
