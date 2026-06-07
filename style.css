@@ -82,3 +82,13 @@ header{
  background:#22c55e;
  color:white;
 }
+.city-selector{
+ text-align:center;
+ padding:20px;
+}
+
+#citySelect{
+ padding:10px;
+ font-size:16px;
+ border-radius:10px;
+}
