@@ -100,5 +100,14 @@ function updateCityHealth(){
  document.querySelector(".health-score")
  .innerText = score + "%";
 }
+.city-selector{
+ text-align:center;
+ padding:20px;
+}
 
+#citySelect{
+ padding:10px;
+ font-size:16px;
+ border-radius:10px;
+}
 updateCityHealth();
