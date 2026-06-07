@@ -92,3 +92,23 @@ header{
  font-size:16px;
  border-radius:10px;
 }
+.alerts-section{
+ padding:40px 20px;
+}
+
+.alerts-section h2{
+ text-align:center;
+}
+
+#alertsContainer{
+ max-width:800px;
+ margin:auto;
+}
+
+.alert-card{
+ background:#1e293b;
+ padding:15px;
+ margin:10px 0;
+ border-left:5px solid #f59e0b;
+ border-radius:10px;
+}
