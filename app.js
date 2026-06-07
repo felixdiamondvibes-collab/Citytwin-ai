@@ -125,4 +125,31 @@ document
  );
 
 });
+const alerts = [
+
+"🚦 Heavy traffic detected in Ikeja",
+
+"🌧 Flood risk rising in Lekki",
+
+"⚡ Energy demand increasing",
+
+"🚑 Emergency services normal"
+
+];
+
+const container =
+document.getElementById("alertsContainer");
+
+alerts.forEach(alert => {
+
+ const div =
+ document.createElement("div");
+
+ div.className = "alert-card";
+
+ div.innerText = alert;
+
+ container.appendChild(div);
+
+});
 updateCityHealth();
