@@ -88,3 +88,8 @@ function predictTraffic() {
 predictTraffic();
   
 });
+const hour = new Date().getHours();
+
+if(hour >= 17 && hour <= 20){
+  console.log("Rush hour active");
+}
