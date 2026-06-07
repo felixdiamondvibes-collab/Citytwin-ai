@@ -93,3 +93,12 @@ const hour = new Date().getHours();
 if(hour >= 17 && hour <= 20){
   console.log("Rush hour active");
 }
+function updateCityHealth(){
+
+ let score = 85;
+
+ document.querySelector(".health-score")
+ .innerText = score + "%";
+}
+
+updateCityHealth();
