@@ -100,4 +100,29 @@ function updateCityHealth(){
  document.querySelector(".health-score")
  .innerText = score + "%";
 }
+const cities = {
+
+lagos: [6.5244, 3.3792, 11],
+
+abuja: [9.0765, 7.3986, 11],
+
+portharcourt: [4.8156, 7.0498, 11]
+
+};
+
+document
+.getElementById("citySelect")
+.addEventListener("change", function(){
+
+ const city = this.value;
+
+ map.setView(
+   [
+     cities[city][0],
+     cities[city][1]
+   ],
+   cities[city][2]
+ );
+
+});
 updateCityHealth();
