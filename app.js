@@ -153,3 +153,23 @@ alerts.forEach(alert => {
 
 });
 updateCityHealth();
+const messages = [
+
+"Traffic congestion expected to increase tomorrow.",
+
+"Flood risk remains low across monitored zones.",
+
+"Energy demand projected to rise by 6%.",
+
+"Infrastructure health remains stable."
+
+];
+
+const randomMessage =
+messages[Math.floor(
+Math.random()*messages.length
+)];
+
+document
+.getElementById("advisorMessage")
+.innerText = randomMessage;
