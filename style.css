@@ -127,3 +127,43 @@ margin-bottom:15px;
 font-size:18px;
 color:#d4d4d4;
 }
+.dashboard{
+padding:90px 0;
+background:#08111f;
+}
+
+.dashboard h2{
+text-align:center;
+font-size:38px;
+margin-bottom:50px;
+}
+
+.dashboard-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
+}
+
+.dashboard-card{
+background:#16263a;
+padding:30px;
+border-radius:15px;
+border:1px solid rgba(79,209,255,.2);
+transition:.3s;
+}
+
+.dashboard-card:hover{
+transform:translateY(-8px);
+box-shadow:0 15px 30px rgba(79,209,255,.15);
+}
+
+.dashboard-card h3{
+margin-bottom:15px;
+color:#4fd1ff;
+font-size:22px;
+}
+
+.dashboard-card p{
+color:#d6d6d6;
+line-height:1.6;
+}
