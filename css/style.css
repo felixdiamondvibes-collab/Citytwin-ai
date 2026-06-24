@@ -265,3 +265,37 @@ border-radius:20px;
 overflow:hidden;
 border:2px solid rgba(79,209,255,.3);
 }
+.analytics-section {
+    padding: 60px 20px;
+    background: #0f172a;
+    color: white;
+}
+
+.analytics-section h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2rem;
+}
+
+.analytics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 25px;
+}
+
+.chart-card {
+    background: #1e293b;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.chart-card h3 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.chart-card canvas {
+    width: 100% !important;
+    height: 300px !important;
+}
