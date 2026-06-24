@@ -19,3 +19,12 @@ cities.forEach(city => {
         .addTo(map)
         .bindPopup(`<b>${city.name}</b><br>${city.info}`);
 });
+const selector = document.getElementById("citySelector");
+
+selector.addEventListener("change", function () {
+    const selectedCity = cities.find(city => city.name === this.value);
+
+    if (selectedCity) {
+        map.flyTo(selectedCity.coords, 10);
+    }
+});
