@@ -95,3 +95,23 @@ new Chart(document.getElementById("waterChart"), {
         }]
     }
 });
+const trafficStates=["Normal","Busy","Heavy"];
+const weatherStates=["Sunny","Cloudy","Rainy"];
+const powerStates=["Stable","High Load","Maintenance"];
+const floodStates=["Low","Medium","High"];
+
+setInterval(()=>{
+
+document.getElementById("trafficStatus").textContent=
+trafficStates[Math.floor(Math.random()*trafficStates.length)];
+
+document.getElementById("weatherStatus").textContent=
+weatherStates[Math.floor(Math.random()*weatherStates.length)];
+
+document.getElementById("powerStatus").textContent=
+powerStates[Math.floor(Math.random()*powerStates.length)];
+
+document.getElementById("floodStatus").textContent=
+floodStates[Math.floor(Math.random()*floodStates.length)];
+
+},4000);
