@@ -187,3 +187,150 @@ data:[45,35,20]
 }
 
 });
+// ========================================
+// LIVE CITY STATUS
+// ========================================
+
+const trafficStates = ["Normal", "Moderate", "Heavy"];
+const weatherStates = ["Sunny", "Cloudy", "Rain", "Storm"];
+const powerStates = ["Stable", "High Load", "Unstable"];
+const floodStates = ["Low", "Medium", "High"];
+
+function randomItem(array) {
+    return array[Math.floor(Math.random() * array.length)];
+}
+
+function updateCityStatus() {
+
+    document.getElementById("trafficStatus").textContent =
+        randomItem(trafficStates);
+
+    document.getElementById("weatherStatus").textContent =
+        randomItem(weatherStates);
+
+    document.getElementById("powerStatus").textContent =
+        randomItem(powerStates);
+
+    document.getElementById("floodStatus").textContent =
+        randomItem(floodStates);
+
+    updatePrediction();
+    updateCityHealth();
+}
+
+updateCityStatus();
+setInterval(updateCityStatus, 5000);
+
+// ========================================
+// AI PREDICTION ENGINE
+// ========================================
+
+function updatePrediction() {
+
+    const traffic = document.getElementById("trafficStatus").textContent;
+    const weather = document.getElementById("weatherStatus").textContent;
+    const power = document.getElementById("powerStatus").textContent;
+    const flood = document.getElementById("floodStatus").textContent;
+
+    let message = "✅ AI predicts normal city operations.";
+
+    if (traffic === "Heavy") {
+        message =
+            "🚦 Heavy traffic detected. AI recommends alternative routes.";
+    }
+
+    if (weather === "Storm") {
+        message =
+            "⛈ Storm detected. AI recommends emergency preparedness.";
+    }
+
+    if (power === "Unstable") {
+        message =
+            "⚡ Power instability detected. Backup systems recommended.";
+    }
+
+    if (flood === "High") {
+        message =
+            "🌊 High flood risk detected. Emergency response advised.";
+    }
+
+    document.getElementById("predictionText").textContent = message;
+}
+
+// ========================================
+// CITY HEALTH SCORE
+// ========================================
+
+function updateCityHealth() {
+
+    let health = 100;
+
+    if (document.getElementById("trafficStatus").textContent === "Heavy")
+        health -= 20;
+
+    if (document.getElementById("weatherStatus").textContent === "Storm")
+        health -= 15;
+
+    if (document.getElementById("powerStatus").textContent === "Unstable")
+        health -= 25;
+
+    if (document.getElementById("floodStatus").textContent === "High")
+        health -= 30;
+
+    if (health < 0) health = 0;
+
+    document.getElementById("cityHealth").textContent = health + "%";
+}
+
+// ========================================
+// LIVE CHART UPDATES
+// ========================================
+
+function randomNumber(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function updateCharts() {
+
+    trafficChart.data.datasets[0].data = [
+        randomNumber(100, 250),
+        randomNumber(100, 250),
+        randomNumber(100, 250),
+        randomNumber(100, 250),
+        randomNumber(100, 250),
+        randomNumber(100, 250),
+        randomNumber(100, 250)
+    ];
+
+    energyChart.data.datasets[0].data = [
+        randomNumber(50, 100),
+        randomNumber(50, 100),
+        randomNumber(50, 100),
+        randomNumber(50, 100)
+    ];
+
+    airChart.data.datasets[0].data = [
+        randomNumber(50, 80),
+        randomNumber(10, 30),
+        randomNumber(5, 20)
+    ];
+
+    waterChart.data.datasets[0].data = [
+        randomNumber(30, 60),
+        randomNumber(20, 40),
+        randomNumber(10, 30)
+    ];
+
+    trafficChart.update();
+    energyChart.update();
+    airChart.update();
+    waterChart.update();
+}
+
+setInterval(updateCharts, 5000);
+
+updatePrediction();
+updateCityHealth();
+updateCharts();
+
+console.log("✅ City Twin AI v2.0 Loaded Successfully");
