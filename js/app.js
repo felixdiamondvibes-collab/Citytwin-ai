@@ -223,3 +223,28 @@ function updateCharts() {
 }
 
 setInterval(updateCharts, 5000);
+// ==========================
+// City Health Score
+// ==========================
+
+function updateCityHealth() {
+
+    let health = 100;
+
+    if (document.getElementById("trafficStatus").textContent === "Heavy")
+        health -= 20;
+
+    if (document.getElementById("weatherStatus").textContent === "Storm")
+        health -= 15;
+
+    if (document.getElementById("powerStatus").textContent === "Unstable")
+        health -= 25;
+
+    if (document.getElementById("floodStatus").textContent === "High")
+        health -= 30;
+
+    document.getElementById("cityHealth").textContent = health + "%";
+}
+
+updateCityHealth();
+setInterval(updateCityHealth, 3000);
