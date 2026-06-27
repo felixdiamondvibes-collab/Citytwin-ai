@@ -171,3 +171,55 @@ function updateCityStatus() {
 
 updateCityStatus();
 setInterval(updateCityStatus, 8000);
+// ==========================
+// Live Sensor Data Simulation
+// ==========================
+
+function randomValue(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function updateCharts() {
+    trafficChart.data.datasets[0].data = [
+        randomValue(40, 100),
+        randomValue(40, 100),
+        randomValue(40, 100),
+        randomValue(40, 100),
+        randomValue(40, 100),
+        randomValue(40, 100)
+    ];
+
+    energyChart.data.datasets[0].data = [
+        randomValue(20, 90),
+        randomValue(20, 90),
+        randomValue(20, 90),
+        randomValue(20, 90),
+        randomValue(20, 90),
+        randomValue(20, 90)
+    ];
+
+    airChart.data.datasets[0].data = [
+        randomValue(10, 80),
+        randomValue(10, 80),
+        randomValue(10, 80),
+        randomValue(10, 80),
+        randomValue(10, 80),
+        randomValue(10, 80)
+    ];
+
+    waterChart.data.datasets[0].data = [
+        randomValue(30, 100),
+        randomValue(30, 100),
+        randomValue(30, 100),
+        randomValue(30, 100),
+        randomValue(30, 100),
+        randomValue(30, 100)
+    ];
+
+    trafficChart.update();
+    energyChart.update();
+    airChart.update();
+    waterChart.update();
+}
+
+setInterval(updateCharts, 5000);
