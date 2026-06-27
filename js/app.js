@@ -1,252 +1,189 @@
-const map = L.map('map').setView([20, 0], 2);
+// ========================================
+// CITY TWIN AI v2.0
+// ========================================
 
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; OpenStreetMap contributors'
+// ---------- WORLD MAP ----------
+
+const map = L.map("map").setView([20, 0], 2);
+
+L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    attribution: "&copy; OpenStreetMap contributors"
 }).addTo(map);
 
 const cities = [
-    { name: "Lagos", coords: [6.5244, 3.3792], info: "AI Traffic & Flood Monitoring" },
-    { name: "London", coords: [51.5074, -0.1278], info: "Smart Transport Network" },
-    { name: "New York", coords: [40.7128, -74.0060], info: "AI Infrastructure Analytics" },
-    { name: "Dubai", coords: [25.2048, 55.2708], info: "Smart City Innovation Hub" },
-    { name: "Singapore", coords: [1.3521, 103.8198], info: "AI Urban Management" },
-    { name: "Tokyo", coords: [35.6762, 139.6503], info: "AI Prediction Center" },
-    { name: "Paris", coords: [48.8566, 2.3522], info: "Climate & Energy Monitoring" }
+
+    {
+        name:"Lagos",
+        coords:[6.5244,3.3792],
+        info:"AI Traffic & Flood Monitoring"
+    },
+
+    {
+        name:"London",
+        coords:[51.5074,-0.1278],
+        info:"Smart Transport Network"
+    },
+
+    {
+        name:"New York",
+        coords:[40.7128,-74.0060],
+        info:"Infrastructure Analytics"
+    },
+
+    {
+        name:"Dubai",
+        coords:[25.2048,55.2708],
+        info:"AI Innovation Center"
+    },
+
+    {
+        name:"Singapore",
+        coords:[1.3521,103.8198],
+        info:"Digital Twin Platform"
+    },
+
+    {
+        name:"Tokyo",
+        coords:[35.6762,139.6503],
+        info:"AI Prediction Center"
+    },
+
+    {
+        name:"Paris",
+        coords:[48.8566,2.3522],
+        info:"Climate Intelligence"
+    }
+
 ];
 
-cities.forEach(city => {
+cities.forEach(city=>{
+
     L.marker(city.coords)
-        .addTo(map)
-        .bindPopup(`<b>${city.name}</b><br>${city.info}`);
-});
-const selector = document.getElementById("citySelector");
 
-selector.addEventListener("change", function () {
-    const selectedCity = cities.find(city => city.name === this.value);
+    .addTo(map)
 
-    if (selectedCity) {
-        map.flyTo(selectedCity.coords, 10);
-    }
-});
-// ===== CITYTWIN AI ANALYTICS =====
+    .bindPopup("<b>"+city.name+"</b><br>"+city.info);
 
-// Traffic Chart
-const trafficChart = new Chart(document.getElementById("trafficChart"), {    type: "line",
-    data: {
-        labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
-        datasets: [{
-            label: "Traffic Flow",
-            data: [120, 150, 180, 170, 220, 200, 250],
-            borderColor: "#00d4ff",
-            backgroundColor: "rgba(0,212,255,0.2)",
-            fill: true,
-            tension: 0.4
-        }]
-    }
 });
 
-// Energy Chart
-const energyChart = new Chart(document.getElementById("energyChart"), {
-    type: "bar",
-    data: {
-        labels: ["North", "South", "East", "West"],
-        datasets: [{
-            label: "Energy Usage",
-            data: [65, 80, 72, 90],
-            backgroundColor: [
-                "#4CAF50",
-                "#FFC107",
-                "#2196F3",
-                "#F44336"
-            ]
-        }]
+const selector=document.getElementById("citySelector");
+
+selector.addEventListener("change",function(){
+
+    const city=cities.find(c=>c.name===this.value);
+
+    if(city){
+
+        map.flyTo(city.coords,10);
+
     }
+
 });
 
-// Air Quality Chart
-const airChart = new Chart(document.getElementById("airChart"), {
-    type: "doughnut",
-    data: {
-        labels: ["Good", "Moderate", "Poor"],
-        datasets: [{
-            data: [65, 25, 10],
-            backgroundColor: [
-                "#4CAF50",
-                "#FFC107",
-                "#F44336"
-            ]
-        }]
-    }
+// ---------- TRAFFIC CHART ----------
+
+const trafficChart=new Chart(
+
+document.getElementById("trafficChart"),
+
+{
+
+type:"line",
+
+data:{
+
+labels:["Mon","Tue","Wed","Thu","Fri","Sat","Sun"],
+
+datasets:[{
+
+label:"Traffic Flow",
+
+data:[120,160,180,150,220,210,240],
+
+borderColor:"#00d4ff",
+
+backgroundColor:"rgba(0,212,255,.25)",
+
+fill:true,
+
+tension:.4
+
+}]
+
+}
+
 });
 
-// Water Consumption Chart
-const waterChart = new Chart(document.getElementById("waterChart"), {
-    type: "pie",
-    data: {
-        labels: ["Residential", "Industrial", "Commercial"],
-        datasets: [{
-            data: [45, 35, 20],
-            backgroundColor: [
-                "#2196F3",
-                "#9C27B0",
-                "#FF9800"
-            ]
-        }]
-    }
-const trafficStates = ["Normal","Heavy","Moderate"];
-const weatherStates = ["Sunny","Cloudy","Rain","Storm"];
-const powerStates = ["Stable","High Load","Unstable"];
-const floodStates = ["Low","Medium","High"];
+// ---------- ENERGY CHART ----------
 
-setInterval(()=>{
-    
-document.getElementById("trafficStatus").textContent=
-trafficStates[Math.floor(Math.random()*trafficStates.length)];
+const energyChart=new Chart(
 
-document.getElementById("weatherStatus").textContent=
-weatherStates[Math.floor(Math.random()*weatherStates.length)];
+document.getElementById("energyChart"),
 
-document.getElementById("powerStatus").textContent=
-powerStates[Math.floor(Math.random()*powerStates.length)];
+{
 
-document.getElementById("floodStatus").textContent=
-floodStates[Math.floor(Math.random()*floodStates.length)];
+type:"bar",
 
-},4000);
-// ==========================
-// Smart AI Prediction Engine
-// ==========================
+data:{
 
-function updateAIPrediction() {
-    const traffic = document.getElementById("trafficStatus").textContent;
-    const weather = document.getElementById("weatherStatus").textContent;
-    const power = document.getElementById("powerStatus").textContent;
-    const flood = document.getElementById("floodStatus").textContent;
+labels:["North","South","East","West"],
 
-    let prediction = "";
+datasets:[{
 
-    if (traffic === "Heavy") {
-        prediction = "🚦 AI predicts severe traffic delays. Alternative routes are recommended.";
-    } else if (flood === "High") {
-        prediction = "🌊 AI predicts possible flooding. Emergency teams have been alerted.";
-    } else if (power === "Unstable") {
-        prediction = "⚡ AI predicts increased power demand. Backup systems are on standby.";
-    } else if (weather === "Storm") {
-        prediction = "⛈ AI predicts severe weather. Citizens should stay alert.";
-    } else {
-        prediction = "✅ AI predicts normal city operations for the next 24 hours.";
-    }
+label:"Energy",
 
-    document.querySelector(".dashboard-card:nth-child(5) p").textContent = prediction;
+data:[65,72,80,91]
+
+}]
+
 }
 
-updateAIPrediction();
-setInterval(updateAIPrediction, 3000);
-// ==========================
-// Live City Status Simulation
-// ==========================
+});
 
-const trafficStates = ["Normal", "Heavy", "Moderate"];
-const weatherStates = ["Sunny", "Cloudy", "Rain", "Storm"];
-const powerStates = ["Stable", "High Load", "Unstable"];
-const floodStates = ["Low", "Medium", "High"];
+// ---------- AIR QUALITY ----------
 
-function updateCityStatus() {
-    document.getElementById("trafficStatus").textContent =
-        trafficStates[Math.floor(Math.random() * trafficStates.length)];
+const airChart=new Chart(
 
-    document.getElementById("weatherStatus").textContent =
-        weatherStates[Math.floor(Math.random() * weatherStates.length)];
+document.getElementById("airChart"),
 
-    document.getElementById("powerStatus").textContent =
-        powerStates[Math.floor(Math.random() * powerStates.length)];
+{
 
-    document.getElementById("floodStatus").textContent =
-        floodStates[Math.floor(Math.random() * floodStates.length)];
+type:"doughnut",
 
-    updateAIPrediction();
+data:{
+
+labels:["Good","Moderate","Poor"],
+
+datasets:[{
+
+data:[70,20,10]
+
+}]
+
 }
 
-updateCityStatus();
-setInterval(updateCityStatus, 8000);
-// ==========================
-// Live Sensor Data Simulation
-// ==========================
+});
 
-function randomValue(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+// ---------- WATER ----------
+
+const waterChart=new Chart(
+
+document.getElementById("waterChart"),
+
+{
+
+type:"pie",
+
+data:{
+
+labels:["Residential","Industrial","Commercial"],
+
+datasets:[{
+
+data:[45,35,20]
+
+}]
+
 }
 
-function updateCharts() {
-    trafficChart.data.datasets[0].data = [
-    randomValue(40,100),
-    randomValue(40,100),
-    randomValue(40,100),
-    randomValue(40,100),
-    randomValue(40,100),
-    randomValue(40,100),
-    randomValue(40,100)
-];
-
-    energyChart.data.datasets[0].data = [
-        randomValue(20, 90),
-        randomValue(20, 90),
-        randomValue(20, 90),
-        randomValue(20, 90),
-        randomValue(20, 90),
-        randomValue(20, 90),
-        randomValue(20, 90)
-    ];
-
-    airChart.data.datasets[0].data = [
-        randomValue(10, 80),
-        randomValue(10, 80),
-        randomValue(10, 80),
-        randomValue(10, 80),
-        randomValue(10, 80),
-        randomValue(10, 80),
-        randomValue(10, 80)
-    ];
-
-    waterChart.data.datasets[0].data = [
-        randomValue(30, 100),
-        randomValue(30, 100),
-        randomValue(30, 100),
-        randomValue(30, 100),
-        randomValue(30, 100),
-        randomValue(30, 100),
-        randomValue(30, 100)
-    ];
-
-    trafficChart.update();
-    energyChart.update();
-    airChart.update();
-    waterChart.update();
-}
-
-setInterval(updateCharts, 5000);
-// ==========================
-// City Health Score
-// ==========================
-
-function updateCityHealth() {
-
-    let health = 100;
-
-    if (document.getElementById("trafficStatus").textContent === "Heavy")
-        health -= 20;
-
-    if (document.getElementById("weatherStatus").textContent === "Storm")
-        health -= 15;
-
-    if (document.getElementById("powerStatus").textContent === "Unstable")
-        health -= 25;
-
-    if (document.getElementById("floodStatus").textContent === "High")
-        health -= 30;
-
-    document.getElementById("cityHealth").textContent = health + "%";
-}
-
-updateCityHealth();
-setInterval(updateCityHealth, 3000);
+});
