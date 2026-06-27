@@ -144,3 +144,30 @@ function updateAIPrediction() {
 
 updateAIPrediction();
 setInterval(updateAIPrediction, 3000);
+// ==========================
+// Live City Status Simulation
+// ==========================
+
+const trafficStates = ["Normal", "Heavy", "Moderate"];
+const weatherStates = ["Sunny", "Cloudy", "Rain", "Storm"];
+const powerStates = ["Stable", "High Load", "Unstable"];
+const floodStates = ["Low", "Medium", "High"];
+
+function updateCityStatus() {
+    document.getElementById("trafficStatus").textContent =
+        trafficStates[Math.floor(Math.random() * trafficStates.length)];
+
+    document.getElementById("weatherStatus").textContent =
+        weatherStates[Math.floor(Math.random() * weatherStates.length)];
+
+    document.getElementById("powerStatus").textContent =
+        powerStates[Math.floor(Math.random() * powerStates.length)];
+
+    document.getElementById("floodStatus").textContent =
+        floodStates[Math.floor(Math.random() * floodStates.length)];
+
+    updateAIPrediction();
+}
+
+updateCityStatus();
+setInterval(updateCityStatus, 8000);
