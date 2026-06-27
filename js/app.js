@@ -115,3 +115,35 @@ document.getElementById("floodStatus").textContent=
 floodStates[Math.floor(Math.random()*floodStates.length)];
 
 },4000);
+// ==========================
+// AI Prediction Engine
+// ==========================
+
+const predictions = [
+    "🚦 Heavy traffic expected in the city center within 30 minutes.",
+    "🌧 Moderate flood risk detected in low-lying areas.",
+    "⚡ Energy demand expected to increase by 12% this evening.",
+    "🌤 Weather conditions remain stable across the city.",
+    "🚨 Emergency services placed on standby due to congestion.",
+    "🌍 Air quality expected to improve later today.",
+    "🏗 Infrastructure operating normally with no critical faults.",
+    "🛰 AI monitoring all city systems in real time."
+];
+
+const predictionElement = document.querySelector(".dashboard-card:nth-child(5) p");
+
+let predictionIndex = 0;
+
+function updatePrediction() {
+    predictionElement.textContent = predictions[predictionIndex];
+
+    predictionIndex++;
+
+    if (predictionIndex >= predictions.length) {
+        predictionIndex = 0;
+    }
+}
+
+updatePrediction();
+
+setInterval(updatePrediction, 5000);
