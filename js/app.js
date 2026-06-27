@@ -31,8 +31,7 @@ selector.addEventListener("change", function () {
 // ===== CITYTWIN AI ANALYTICS =====
 
 // Traffic Chart
-new Chart(document.getElementById("trafficChart"), {
-    type: "line",
+const trafficChart = new Chart(document.getElementById("trafficChart"), {    type: "line",
     data: {
         labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
         datasets: [{
@@ -47,7 +46,7 @@ new Chart(document.getElementById("trafficChart"), {
 });
 
 // Energy Chart
-new Chart(document.getElementById("energyChart"), {
+const energyChart = new Chart(document.getElementById("energyChart"), {
     type: "bar",
     data: {
         labels: ["North", "South", "East", "West"],
@@ -65,7 +64,7 @@ new Chart(document.getElementById("energyChart"), {
 });
 
 // Air Quality Chart
-new Chart(document.getElementById("airChart"), {
+const airChart = new Chart(document.getElementById("airChart"), {
     type: "doughnut",
     data: {
         labels: ["Good", "Moderate", "Poor"],
@@ -81,7 +80,7 @@ new Chart(document.getElementById("airChart"), {
 });
 
 // Water Consumption Chart
-new Chart(document.getElementById("waterChart"), {
+const waterChart = new Chart(document.getElementById("waterChart"), {
     type: "pie",
     data: {
         labels: ["Residential", "Industrial", "Commercial"],
