@@ -93,14 +93,13 @@ const waterChart = new Chart(document.getElementById("waterChart"), {
             ]
         }]
     }
-});
-const trafficStates=["Normal","Busy","Heavy"];
-const weatherStates=["Sunny","Cloudy","Rainy"];
-const powerStates=["Stable","High Load","Maintenance"];
-const floodStates=["Low","Medium","High"];
+const trafficStates = ["Normal","Heavy","Moderate"];
+const weatherStates = ["Sunny","Cloudy","Rain","Storm"];
+const powerStates = ["Stable","High Load","Unstable"];
+const floodStates = ["Low","Medium","High"];
 
 setInterval(()=>{
-
+    
 document.getElementById("trafficStatus").textContent=
 trafficStates[Math.floor(Math.random()*trafficStates.length)];
 
@@ -180,15 +179,17 @@ function randomValue(min, max) {
 
 function updateCharts() {
     trafficChart.data.datasets[0].data = [
-        randomValue(40, 100),
-        randomValue(40, 100),
-        randomValue(40, 100),
-        randomValue(40, 100),
-        randomValue(40, 100),
-        randomValue(40, 100)
-    ];
+    randomValue(40,100),
+    randomValue(40,100),
+    randomValue(40,100),
+    randomValue(40,100),
+    randomValue(40,100),
+    randomValue(40,100),
+    randomValue(40,100)
+];
 
     energyChart.data.datasets[0].data = [
+        randomValue(20, 90),
         randomValue(20, 90),
         randomValue(20, 90),
         randomValue(20, 90),
@@ -203,10 +204,12 @@ function updateCharts() {
         randomValue(10, 80),
         randomValue(10, 80),
         randomValue(10, 80),
+        randomValue(10, 80),
         randomValue(10, 80)
     ];
 
     waterChart.data.datasets[0].data = [
+        randomValue(30, 100),
         randomValue(30, 100),
         randomValue(30, 100),
         randomValue(30, 100),
