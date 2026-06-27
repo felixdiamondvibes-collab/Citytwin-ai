@@ -116,34 +116,31 @@ floodStates[Math.floor(Math.random()*floodStates.length)];
 
 },4000);
 // ==========================
-// AI Prediction Engine
+// Smart AI Prediction Engine
 // ==========================
 
-const predictions = [
-    "🚦 Heavy traffic expected in the city center within 30 minutes.",
-    "🌧 Moderate flood risk detected in low-lying areas.",
-    "⚡ Energy demand expected to increase by 12% this evening.",
-    "🌤 Weather conditions remain stable across the city.",
-    "🚨 Emergency services placed on standby due to congestion.",
-    "🌍 Air quality expected to improve later today.",
-    "🏗 Infrastructure operating normally with no critical faults.",
-    "🛰 AI monitoring all city systems in real time."
-];
+function updateAIPrediction() {
+    const traffic = document.getElementById("trafficStatus").textContent;
+    const weather = document.getElementById("weatherStatus").textContent;
+    const power = document.getElementById("powerStatus").textContent;
+    const flood = document.getElementById("floodStatus").textContent;
 
-const predictionElement = document.querySelector(".dashboard-card:nth-child(5) p");
+    let prediction = "";
 
-let predictionIndex = 0;
-
-function updatePrediction() {
-    predictionElement.textContent = predictions[predictionIndex];
-
-    predictionIndex++;
-
-    if (predictionIndex >= predictions.length) {
-        predictionIndex = 0;
+    if (traffic === "Heavy") {
+        prediction = "🚦 AI predicts severe traffic delays. Alternative routes are recommended.";
+    } else if (flood === "High") {
+        prediction = "🌊 AI predicts possible flooding. Emergency teams have been alerted.";
+    } else if (power === "Unstable") {
+        prediction = "⚡ AI predicts increased power demand. Backup systems are on standby.";
+    } else if (weather === "Storm") {
+        prediction = "⛈ AI predicts severe weather. Citizens should stay alert.";
+    } else {
+        prediction = "✅ AI predicts normal city operations for the next 24 hours.";
     }
+
+    document.querySelector(".dashboard-card:nth-child(5) p").textContent = prediction;
 }
 
-updatePrediction();
-
-setInterval(updatePrediction, 5000);
+updateAIPrediction();
+setInterval(updateAIPrediction, 3000);
