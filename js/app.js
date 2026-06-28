@@ -99,7 +99,11 @@ selector.addEventListener("change",function(){
 
     if(city){
 
-        map.flyTo(city.coords,10);
+    map.flyTo(city.coords,10);
+
+    loadWeather(city.name);
+
+}
 
     }
 
