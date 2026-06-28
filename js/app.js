@@ -169,3 +169,6 @@ async function loadEarthquakes() {
     }
 
 }
+loadEarthquakes();
+
+setInterval(loadEarthquakes, 600000);
