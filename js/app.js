@@ -130,8 +130,39 @@ loadWeather(city.name);
 
 // Load default weather
 
-loadWeather("Lagos");
+loadWeather(city.name);
+loadAirQuality(city.coords[0], city.coords[1]);
 
+async function loadAirQuality(lat, lon) {
+
+    try {
+
+        const response = await fetch(
+            `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${API_KEY}`
+        );
+
+        const data = await response.json();
+
+        const aqi = data.list[0].main.aqi;
+
+        const levels = {
+            1: "🟢 Good",
+            2: "🟡 Fair",
+            3: "🟠 Moderate",
+            4: "🔴 Poor",
+            5: "🟣 Very Poor"
+        };
+
+        document.getElementById("airQualityStatus").textContent =
+            levels[aqi];
+
+    } catch (error) {
+
+        console.error("Air Quality Error:", error);
+
+    }
+
+}
 async function loadEarthquakes() {
 
     try {
