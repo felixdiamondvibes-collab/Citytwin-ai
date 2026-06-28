@@ -4,6 +4,31 @@
 
 // ---------- WORLD MAP ----------
 const API_KEY = "f5610789368f3aeff676c6259bef4360";
+async function loadWeather(city = "Lagos") {
+
+    try {
+
+        const response = await fetch(
+            `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`
+        );
+
+        const data = await response.json();
+
+        if (data.cod !== 200) {
+            console.log(data.message);
+            return;
+        }
+
+        document.getElementById("weatherStatus").textContent =
+            `${data.main.temp}°C • ${data.weather[0].main}`;
+
+    } catch (error) {
+
+        console.error("Weather Error:", error);
+
+    }
+
+}
 const map = L.map("map").setView([20, 0], 2);
 
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
