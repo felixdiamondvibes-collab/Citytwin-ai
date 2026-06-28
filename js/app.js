@@ -93,17 +93,16 @@ cities.forEach(city=>{
 
 const selector=document.getElementById("citySelector");
 
-selector.addEventListener("change",function(){
+selector.addEventListener("change", function () {
 
-    const city=cities.find(c=>c.name===this.value);
+    const city = cities.find(c => c.name === this.value);
 
-    if(city){
+    if (city) {
+        map.flyTo(city.coords, 10);
+        loadWeather(city.name);
+    }
 
-    map.flyTo(city.coords,10);
-
-    loadWeather(city.name);
-
-}
+});
 
     }
 
