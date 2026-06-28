@@ -4,7 +4,7 @@
 
 // ---------- WEATHER API ----------
 
-const API_KEY = "34d0abe62fa9f3b5f60e4bc48ae29086";
+const API_KEY = "c7a3f070629757965db59f37fe699086";
 
 async function loadWeather(city = "Lagos") {
 
