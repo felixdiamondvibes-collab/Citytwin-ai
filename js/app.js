@@ -220,7 +220,6 @@ data:[45,35,20]
 // ========================================
 
 const trafficStates = ["Normal", "Moderate", "Heavy"];
-const weatherStates = ["Sunny", "Cloudy", "Rain", "Storm"];
 const powerStates = ["Stable", "High Load", "Unstable"];
 const floodStates = ["Low", "Medium", "High"];
 
@@ -232,9 +231,6 @@ function updateCityStatus() {
 
     document.getElementById("trafficStatus").textContent =
         randomItem(trafficStates);
-
-    document.getElementById("weatherStatus").textContent =
-        randomItem(weatherStates);
 
     document.getElementById("powerStatus").textContent =
         randomItem(powerStates);
@@ -363,4 +359,4 @@ updateCharts();
 
 console.log("✅ City Twin AI v2.0 Loaded Successfully");
 
-loadWeather();
+loadWeather("Lagos");
