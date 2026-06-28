@@ -3,7 +3,7 @@
 // ========================================
 
 // ---------- WORLD MAP ----------
-const API_KEY = "PASTE_YOUR_GENERATED_API_KEY_HERE";
+const API_KEY = "f5610789368f3aeff676c6259bef4360";
 const map = L.map("map").setView([20, 0], 2);
 
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
