@@ -363,3 +363,5 @@ updateCityHealth();
 updateCharts();
 
 console.log("✅ City Twin AI v2.0 Loaded Successfully");
+
+loadWeather();
