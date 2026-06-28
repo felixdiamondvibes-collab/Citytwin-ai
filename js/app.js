@@ -1,9 +1,11 @@
 // ========================================
-// CITY TWIN AI v2.0
+// CITY TWIN AI v3.0
 // ========================================
 
-// ---------- WORLD MAP ----------
-const API_KEY = "f5610789368f3aeff676c6259bef4360";
+// ---------- WEATHER API ----------
+
+const API_KEY = "34d0abe62fa9f3b5f60e4bc48ae29086";
+
 async function loadWeather(city = "Lagos") {
 
     try {
@@ -15,348 +17,117 @@ async function loadWeather(city = "Lagos") {
         const data = await response.json();
 
         if (data.cod !== 200) {
-            console.log(data.message);
+            console.error(data.message);
             return;
         }
 
         document.getElementById("weatherStatus").textContent =
-            `${data.main.temp}°C • ${data.weather[0].main}`;
+            `${Math.round(data.main.temp)}°C • ${data.weather[0].main}`;
 
     } catch (error) {
 
-        console.error("Weather Error:", error);
+        console.error("Weather API Error:", error);
 
     }
 
 }
+
+// ========================================
+// WORLD MAP
+// ========================================
+
 const map = L.map("map").setView([20, 0], 2);
 
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+
     attribution: "&copy; OpenStreetMap contributors"
+
 }).addTo(map);
+
+// ========================================
+// SMART CITIES
+// ========================================
 
 const cities = [
 
-    {
-        name:"Lagos",
-        coords:[6.5244,3.3792],
-        info:"AI Traffic & Flood Monitoring"
-    },
+{
+name:"Lagos",
+coords:[6.5244,3.3792],
+info:"AI Traffic & Flood Monitoring"
+},
 
-    {
-        name:"London",
-        coords:[51.5074,-0.1278],
-        info:"Smart Transport Network"
-    },
+{
+name:"London",
+coords:[51.5074,-0.1278],
+info:"Smart Transport Network"
+},
 
-    {
-        name:"New York",
-        coords:[40.7128,-74.0060],
-        info:"Infrastructure Analytics"
-    },
+{
+name:"New York",
+coords:[40.7128,-74.0060],
+info:"Infrastructure Analytics"
+},
 
-    {
-        name:"Dubai",
-        coords:[25.2048,55.2708],
-        info:"AI Innovation Center"
-    },
+{
+name:"Dubai",
+coords:[25.2048,55.2708],
+info:"AI Innovation Hub"
+},
 
-    {
-        name:"Singapore",
-        coords:[1.3521,103.8198],
-        info:"Digital Twin Platform"
-    },
+{
+name:"Singapore",
+coords:[1.3521,103.8198],
+info:"Digital Twin Platform"
+},
 
-    {
-        name:"Tokyo",
-        coords:[35.6762,139.6503],
-        info:"AI Prediction Center"
-    },
+{
+name:"Tokyo",
+coords:[35.6762,139.6503],
+info:"AI Prediction Center"
+},
 
-    {
-        name:"Paris",
-        coords:[48.8566,2.3522],
-        info:"Climate Intelligence"
-    }
+{
+name:"Paris",
+coords:[48.8566,2.3522],
+info:"Climate Intelligence"
+}
 
 ];
 
-cities.forEach(city=>{
+// ========================================
+// MAP MARKERS
+// ========================================
 
-    L.marker(city.coords)
+cities.forEach(city => {
 
-    .addTo(map)
+L.marker(city.coords)
 
-    .bindPopup("<b>"+city.name+"</b><br>"+city.info);
+.addTo(map)
 
-});
-
-const selector=document.getElementById("citySelector");
-
-selector.addEventListener("change", function () {
-
-    const city = cities.find(c => c.name === this.value);
-
-    if (city) {
-        map.flyTo(city.coords, 10);
-        loadWeather(city.name);
-    }
+.bindPopup(`<b>${city.name}</b><br>${city.info}`);
 
 });
 
-    }
+// ========================================
+// CITY SELECTOR
+// ========================================
 
-});
+const selector = document.getElementById("citySelector");
 
-// ---------- TRAFFIC CHART ----------
+selector.addEventListener("change", () => {
 
-const trafficChart=new Chart(
+const city = cities.find(c => c.name === selector.value);
 
-document.getElementById("trafficChart"),
+if(city){
 
-{
+map.flyTo(city.coords,10);
 
-type:"line",
-
-data:{
-
-labels:["Mon","Tue","Wed","Thu","Fri","Sat","Sun"],
-
-datasets:[{
-
-label:"Traffic Flow",
-
-data:[120,160,180,150,220,210,240],
-
-borderColor:"#00d4ff",
-
-backgroundColor:"rgba(0,212,255,.25)",
-
-fill:true,
-
-tension:.4
-
-}]
+loadWeather(city.name);
 
 }
 
 });
 
-// ---------- ENERGY CHART ----------
-
-const energyChart=new Chart(
-
-document.getElementById("energyChart"),
-
-{
-
-type:"bar",
-
-data:{
-
-labels:["North","South","East","West"],
-
-datasets:[{
-
-label:"Energy",
-
-data:[65,72,80,91]
-
-}]
-
-}
-
-});
-
-// ---------- AIR QUALITY ----------
-
-const airChart=new Chart(
-
-document.getElementById("airChart"),
-
-{
-
-type:"doughnut",
-
-data:{
-
-labels:["Good","Moderate","Poor"],
-
-datasets:[{
-
-data:[70,20,10]
-
-}]
-
-}
-
-});
-
-// ---------- WATER ----------
-
-const waterChart=new Chart(
-
-document.getElementById("waterChart"),
-
-{
-
-type:"pie",
-
-data:{
-
-labels:["Residential","Industrial","Commercial"],
-
-datasets:[{
-
-data:[45,35,20]
-
-}]
-
-}
-
-});
-// ========================================
-// LIVE CITY STATUS
-// ========================================
-
-const trafficStates = ["Normal", "Moderate", "Heavy"];
-const powerStates = ["Stable", "High Load", "Unstable"];
-const floodStates = ["Low", "Medium", "High"];
-
-function randomItem(array) {
-    return array[Math.floor(Math.random() * array.length)];
-}
-
-function updateCityStatus() {
-
-    document.getElementById("trafficStatus").textContent =
-        randomItem(trafficStates);
-
-    document.getElementById("powerStatus").textContent =
-        randomItem(powerStates);
-
-    document.getElementById("floodStatus").textContent =
-        randomItem(floodStates);
-
-    updatePrediction();
-    updateCityHealth();
-}
-
-updateCityStatus();
-setInterval(updateCityStatus, 5000);
-
-// ========================================
-// AI PREDICTION ENGINE
-// ========================================
-
-function updatePrediction() {
-
-    const traffic = document.getElementById("trafficStatus").textContent;
-    const weather = document.getElementById("weatherStatus").textContent;
-    const power = document.getElementById("powerStatus").textContent;
-    const flood = document.getElementById("floodStatus").textContent;
-
-    let message = "✅ AI predicts normal city operations.";
-
-    if (traffic === "Heavy") {
-        message =
-            "🚦 Heavy traffic detected. AI recommends alternative routes.";
-    }
-
-    if (weather === "Storm") {
-        message =
-            "⛈ Storm detected. AI recommends emergency preparedness.";
-    }
-
-    if (power === "Unstable") {
-        message =
-            "⚡ Power instability detected. Backup systems recommended.";
-    }
-
-    if (flood === "High") {
-        message =
-            "🌊 High flood risk detected. Emergency response advised.";
-    }
-
-    document.getElementById("predictionText").textContent = message;
-}
-
-// ========================================
-// CITY HEALTH SCORE
-// ========================================
-
-function updateCityHealth() {
-
-    let health = 100;
-
-    if (document.getElementById("trafficStatus").textContent === "Heavy")
-        health -= 20;
-
-    if (document.getElementById("weatherStatus").textContent === "Storm")
-        health -= 15;
-
-    if (document.getElementById("powerStatus").textContent === "Unstable")
-        health -= 25;
-
-    if (document.getElementById("floodStatus").textContent === "High")
-        health -= 30;
-
-    if (health < 0) health = 0;
-
-    document.getElementById("cityHealth").textContent = health + "%";
-}
-
-// ========================================
-// LIVE CHART UPDATES
-// ========================================
-
-function randomNumber(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-function updateCharts() {
-
-    trafficChart.data.datasets[0].data = [
-        randomNumber(100, 250),
-        randomNumber(100, 250),
-        randomNumber(100, 250),
-        randomNumber(100, 250),
-        randomNumber(100, 250),
-        randomNumber(100, 250),
-        randomNumber(100, 250)
-    ];
-
-    energyChart.data.datasets[0].data = [
-        randomNumber(50, 100),
-        randomNumber(50, 100),
-        randomNumber(50, 100),
-        randomNumber(50, 100)
-    ];
-
-    airChart.data.datasets[0].data = [
-        randomNumber(50, 80),
-        randomNumber(10, 30),
-        randomNumber(5, 20)
-    ];
-
-    waterChart.data.datasets[0].data = [
-        randomNumber(30, 60),
-        randomNumber(20, 40),
-        randomNumber(10, 30)
-    ];
-
-    trafficChart.update();
-    energyChart.update();
-    airChart.update();
-    waterChart.update();
-}
-
-setInterval(updateCharts, 5000);
-
-updatePrediction();
-updateCityHealth();
-updateCharts();
-
-console.log("✅ City Twin AI v2.0 Loaded Successfully");
+// Load default weather
 
 loadWeather("Lagos");
