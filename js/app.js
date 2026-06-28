@@ -131,3 +131,41 @@ loadWeather(city.name);
 // Load default weather
 
 loadWeather("Lagos");
+
+async function loadEarthquakes() {
+
+    try {
+
+        const response = await fetch(
+            "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson"
+        );
+
+        const data = await response.json();
+
+        if (data.features.length > 0) {
+
+            const quake = data.features[0];
+
+            const magnitude = quake.properties.mag;
+            const place = quake.properties.place;
+
+            document.getElementById("earthquakeStatus").textContent =
+                `M${magnitude} • ${place}`;
+
+        } else {
+
+            document.getElementById("earthquakeStatus").textContent =
+                "No earthquakes today";
+
+        }
+
+    } catch (error) {
+
+        console.error(error);
+
+        document.getElementById("earthquakeStatus").textContent =
+            "Unavailable";
+
+    }
+
+}
