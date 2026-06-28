@@ -203,3 +203,5 @@ async function loadEarthquakes() {
 loadEarthquakes();
 
 setInterval(loadEarthquakes, 600000);
+
+loadAirQuality(6.5244, 3.3792);
