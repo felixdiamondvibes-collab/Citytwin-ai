@@ -2,441 +2,103 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>City Twin AI</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="css/style.css">
+<title>City Twin AI</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- CSS -->
+<link rel="stylesheet" href="css/style.css">
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<!-- Google Font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<!-- Leaflet -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
 
-    <script defer src="js/app.js"></script>
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<!-- App -->
+<script defer src="js/app.js"></script>
 
 </head>
 
 <body>
 
+<!-- ========================= -->
+<!-- NAVIGATION -->
+<!-- ========================= -->
+
 <header class="navbar">
 
-    <div class="container">
+<div class="container">
 
-        <div class="logo">
-            CITY TWIN AI
-        </div>
+<div class="logo">
 
-        <nav>
+CITY TWIN AI
 
-            <a href="#home">Home</a>
-            <a href="#dashboard">Dashboard</a>
-            <a href="#analytics">Analytics</a>
-            <a href="#map-section">Map</a>
-            <a href="#operations">Operations</a>
-            <a href="#contact">Contact</a>
+</div>
 
-        </nav>
+<nav>
 
-        <button class="demo-btn">
-            Request Demo
-        </button>
+<a href="#">Home</a>
 
-    </div>
+<a href="#dashboard">Dashboard</a>
+
+<a href="#analytics">Analytics</a>
+
+<a href="#map-section">Map</a>
+
+<a href="#emergency">Emergency</a>
+
+<a href="#about">About</a>
+
+</nav>
+
+<button class="demo-btn">
+
+Request Demo
+
+</button>
+
+</div>
 
 </header>
 
-<section id="home" class="hero">
+<!-- ========================= -->
+<!-- HERO -->
+<!-- ========================= -->
 
-    <div class="container">
+<section class="hero">
 
-        <h1>
-            Building the Future of Smart Cities with Artificial Intelligence
-        </h1>
+<div class="container">
 
-        <p>
+<h1>
 
-            City Twin AI helps governments monitor infrastructure,
-            predict disasters, optimize traffic,
-            manage energy,
-            and protect citizens through intelligent digital twins.
+Building the Future of Smart Cities with Artificial Intelligence
 
-        </p>
+</h1>
 
-        <div class="hero-buttons">
+<p>
 
-            <button class="hero-btn">
-                Explore Platform
-            </button>
+Monitor infrastructure, predict disasters, analyze traffic, monitor climate, and empower governments with real-time AI insights.
 
-            <button class="hero-btn secondary">
-                Watch Demo
-            </button>
+</p>
 
-        </div>
+<button class="hero-btn">
 
-    </div>
+Explore Platform
+
+</button>
+
+</div>
 
 </section>
-
-<section class="stats">
-
-    <div class="container">
-
-        <h2>Global Smart City Network</h2>
-
-        <div class="stats-grid">
-
-            <div class="card">
-                <h3>195+</h3>
-                <p>Countries Ready</p>
-            </div>
-
-            <div class="card">
-                <h3>10,482</h3>
-                <p>Connected Cities</p>
-            </div>
-
-            <div class="card">
-                <h3>99.98%</h3>
-                <p>AI Prediction Accuracy</p>
-            </div>
-
-            <div class="card">
-                <h3>24/7</h3>
-                <p>AI Monitoring</p>
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-<section id="dashboard" class="dashboard">
-
-    <div class="container">
-
-        <h2>Live AI Dashboard</h2>
-
-        <div class="dashboard-grid">
-
-            <div class="dashboard-card">
-
-                <h3>🚦 Traffic Status</h3>
-
-                <p id="trafficStatus">
-                    Normal
-                </p>
-
-            </div>
-
-            <div class="dashboard-card">
-
-                <h3>🌦 Weather</h3>
-
-                <p id="weatherStatus">
-                    Sunny
-                </p>
-
-            </div>
-
-            <div class="dashboard-card">
-
-                <h3>⚡ Power Grid</h3>
-
-                <p id="powerStatus">
-                    Stable
-                </p>
-
-            </div>
-
-            <div class="dashboard-card">
-
-                <h3>🌊 Flood Risk</h3>
-
-                <p id="floodStatus">
-                    Low
-                </p>
-
-            </div>
-
-            <div class="dashboard-card">
-
-                <h3>🤖 AI Prediction</h3>
-
-                <p id="predictionText">
-                    AI is analysing the city...
-
-                </p>
-
-            </div>
-
-            <div class="dashboard-card">
-
-                <h3>🏙 City Health</h3>
-
-                <p id="cityHealth">
-
-                    100%
-
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-<section id="operations" class="operations">
-
-    <div class="container">
-
-        <h2>Global Operations Center</h2>
-
-        <div class="operations-grid">
-
-            <div class="operations-card">
-                <h3>🌍 Active Cities</h3>
-                <p>10,482 Connected</p>
-            </div>
-
-            <div class="operations-card">
-                <h3>🛰 Satellite Network</h3>
-                <p>128 Active Feeds</p>
-            </div>
-
-            <div class="operations-card">
-                <h3>🚨 Emergency Alerts</h3>
-                <p>No Critical Incidents</p>
-            </div>
-
-            <div class="operations-card">
-                <h3>⚡ Power Grid</h3>
-                <p>Stable</p>
-            </div>
-
-            <div class="operations-card">
-                <h3>🌡 Climate Monitor</h3>
-                <p>Normal Conditions</p>
-            </div>
-
-            <div class="operations-card">
-                <h3>🔒 Cyber Security</h3>
-                <p>Protected</p>
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-<section id="analytics" class="analytics-section">
-
-    <div class="container">
-
-        <h2>CityTwin AI Analytics Center</h2>
-
-        <div class="analytics-grid">
-
-            <div class="chart-card">
-
-                <h3>🚦 Traffic Flow</h3>
-
-                <canvas id="trafficChart"></canvas>
-
-            </div>
-
-            <div class="chart-card">
-
-                <h3>⚡ Energy Usage</h3>
-
-                <canvas id="energyChart"></canvas>
-
-            </div>
-
-            <div class="chart-card">
-
-                <h3>🌿 Air Quality</h3>
-
-                <canvas id="airChart"></canvas>
-
-            </div>
-
-            <div class="chart-card">
-
-                <h3>💧 Water Consumption</h3>
-
-                <canvas id="waterChart"></canvas>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-<section class="ai-status">
-
-    <div class="container">
-
-        <h2>AI Command Center</h2>
-
-        <div class="status-grid">
-
-            <div class="status-card">
-                <h3>🤖 AI Engine</h3>
-                <p>ONLINE</p>
-            </div>
-
-            <div class="status-card">
-                <h3>📡 Sensors</h3>
-                <p>CONNECTED</p>
-            </div>
-
-            <div class="status-card">
-                <h3>🛰 Satellite</h3>
-                <p>ACTIVE</p>
-            </div>
-
-            <div class="status-card">
-                <h3>🔐 Security</h3>
-                <p>SECURE</p>
-            </div>
-            <div class="status-card">
-    <h3>🌍 Earthquakes</h3>
-    <p id="earthquakeStatus">Loading...</p>
-            </div>
-            <div class="status-card">
-    <h3>🌫 Air Quality</h3>
-    <p id="airQualityStatus">Loading...</p>
-            </div>
-
-        </div>
-        
-</section>
-
-<section id="map-section" class="map-section">
-
-    <div class="container">
-
-        <h2>Global Smart City Map</h2>
-
-        <select id="citySelector">
-
-            <option value="">Choose a City</option>
-            <option value="Lagos">Lagos</option>
-            <option value="London">London</option>
-            <option value="New York">New York</option>
-            <option value="Dubai">Dubai</option>
-            <option value="Singapore">Singapore</option>
-            <option value="Tokyo">Tokyo</option>
-            <option value="Paris">Paris</option>
-
-        </select>
-
-        <div id="map"></div>
-
-    </div>
-
-</section>
-<footer id="contact" class="footer">
-
-    <div class="container">
-
-        <div class="footer-grid">
-
-            <div class="footer-column">
-
-                <h2>City Twin AI</h2>
-
-                <p>
-
-                    Building intelligent digital twins for cities around
-                    the world using Artificial Intelligence, IoT,
-                    predictive analytics and real-time monitoring.
-
-                </p>
-
-            </div>
-
-            <div class="footer-column">
-
-                <h3>Platform</h3>
-
-                <ul>
-
-                    <li><a href="#dashboard">Dashboard</a></li>
-
-                    <li><a href="#analytics">Analytics</a></li>
-
-                    <li><a href="#operations">Operations</a></li>
-
-                    <li><a href="#map-section">Global Map</a></li>
-
-                </ul>
-
-            </div>
-
-            <div class="footer-column">
-
-                <h3>Solutions</h3>
-
-                <ul>
-
-                    <li>Smart Cities</li>
-
-                    <li>Infrastructure</li>
-
-                    <li>Traffic AI</li>
-
-                    <li>Disaster Prediction</li>
-
-                </ul>
-
-            </div>
-
-            <div class="footer-column">
-
-                <h3>Future Features</h3>
-
-                <ul>
-
-                    <li>Government Dashboard</li>
-
-                    <li>Digital Twin Engine</li>
-
-                    <li>AI Assistant</li>
-
-                    <li>Global API Network</li>
-
-                </ul>
-
-            </div>
-
-        </div>
-
-        <div class="footer-bottom">
-
-            <p>
-                © 2026 City Twin AI • Designed by Felix Diamond • All Rights Reserved
-            </p>
-
-        </div>
-
-    </div>
-
-</footer>
-
-</body>
-
-</html>
