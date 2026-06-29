@@ -3,7 +3,7 @@
 // charts.js
 // Analytics Charts
 // ==========================================
-
+alert("charts.js loaded");
 let trafficChart;
 let energyChart;
 let airChart;
