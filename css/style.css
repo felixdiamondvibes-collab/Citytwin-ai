@@ -547,3 +547,185 @@ color:#ff6b6b;
 color:#d7d7d7;
 line-height:1.6;
 }
+/* ==========================================
+   GLOBAL NEWS
+========================================== */
+
+.news-section{
+padding:90px 0;
+background:#0b1f30;
+}
+
+.news-section h2{
+text-align:center;
+font-size:36px;
+margin-bottom:40px;
+color:#00d4ff;
+}
+
+.news-card{
+background:#10273b;
+padding:30px;
+border-radius:15px;
+border:1px solid rgba(255,255,255,.08);
+}
+
+.news-card p{
+font-size:18px;
+line-height:1.8;
+color:#e5e5e5;
+}
+
+/* ==========================================
+   FOOTER
+========================================== */
+
+footer{
+background:#06101a;
+padding:50px 20px;
+text-align:center;
+border-top:2px solid #00d4ff;
+}
+
+footer h2{
+color:#00d4ff;
+margin-bottom:15px;
+font-size:30px;
+}
+
+footer p{
+color:#bfc9d4;
+margin:8px 0;
+}
+
+/* ==========================================
+   SCROLLBAR
+========================================== */
+
+::-webkit-scrollbar{
+width:10px;
+}
+
+::-webkit-scrollbar-track{
+background:#07131f;
+}
+
+::-webkit-scrollbar-thumb{
+background:#00d4ff;
+border-radius:20px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+background:#00b8df;
+}
+
+/* ==========================================
+   FADE ANIMATION
+========================================== */
+
+.dashboard-card,
+.command-card,
+.chart-card,
+.card,
+.emergency-card,
+.news-card{
+animation:fadeUp .8s ease;
+}
+
+@keyframes fadeUp{
+
+from{
+opacity:0;
+transform:translateY(30px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+/* ==========================================
+   RESPONSIVE DESIGN
+========================================== */
+
+@media(max-width:992px){
+
+.hero h1{
+font-size:40px;
+}
+
+.analytics-grid{
+grid-template-columns:1fr;
+}
+
+nav{
+display:none;
+}
+
+.navbar .container{
+flex-direction:column;
+gap:20px;
+}
+
+}
+
+@media(max-width:768px){
+
+.hero{
+padding:80px 20px;
+}
+
+.hero h1{
+font-size:32px;
+}
+
+.hero p{
+font-size:17px;
+}
+
+.stats-grid,
+.dashboard-grid,
+.command-grid,
+.analytics-grid,
+.emergency-grid{
+grid-template-columns:1fr;
+}
+
+#map{
+height:400px;
+}
+
+.demo-btn,
+.hero-btn{
+width:100%;
+}
+
+}
+
+@media(max-width:480px){
+
+.logo{
+font-size:22px;
+}
+
+.hero h1{
+font-size:28px;
+}
+
+.hero p{
+font-size:16px;
+}
+
+.stats h2,
+.dashboard h2,
+.command-center h2,
+.analytics-section h2,
+.map-section h2,
+.emergency-section h2,
+.news-section h2{
+font-size:28px;
+}
+
+   }
